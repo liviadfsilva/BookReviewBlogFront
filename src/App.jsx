@@ -4,7 +4,7 @@ import Recentposts from "./components/Recentposts"
 
 export default function App() {
   return (
-    <div className="bg-[#F3EEEA] min-h-screen">
+    <div className="bg-[#FFFFF] min-h-screen">
       <Header />
       <Navbar />
       <Recentposts />
