@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center border-t border-[#54473F] border-opacity-10">
+    <footer className="border-t border-[#54473F] border-opacity-10 w-3/4 mx-auto mt-8">
       <div className="w-full p-4 text-center text-[#54473F]">
         © 2025 - Made with ♥️ by Lily
       </div>

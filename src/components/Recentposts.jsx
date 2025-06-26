@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Recentposts = () => {
   return (
-    <div className="pb-36">
+    <div>
       <h1 className="text-[#AF8260] text-center animate-bounce mt-14">↓</h1>
       <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">Most Recent Reviews</h2>
       <div className="flex justify-center gap-12 mt-8">

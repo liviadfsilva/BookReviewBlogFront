@@ -16,14 +16,14 @@ export default function App() {
       <Router>
         <Header />
         <Navbar />
-        <div className="flex-grow">
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
           </Routes>
-        </div>
+        </main>
         <Footer />
       </Router>
     </div>
