@@ -22,7 +22,7 @@ const Recentposts = () => {
           <h1 className="text-[#AF8260] italic text-3xl font-serif mt-5">Haunting Adeline by H. D. Carlton: Book Review</h1>
         </div>
       </div>
-      <div className="mt-40 flex">
+      <div className="mt-36 flex mb-6">
         <button className="bg-[#e7cbb6] p-4 py-4 px-8 rounded text-[#54473F] font-semibold text-xl ml-auto mr-32"><Link to="/book-reviews">Older Reviews</Link></button>
       </div>
     </div>
