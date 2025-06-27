@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Recentposts = () => {
+const RecentPosts = () => {
   return (
     <div>
       <h1 className="text-[#AF8260] text-center animate-bounce mt-14">
@@ -40,4 +40,4 @@ const Recentposts = () => {
   );
 };
 
-export default Recentposts;
+export default RecentPosts;

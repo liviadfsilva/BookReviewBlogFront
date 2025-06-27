@@ -1,10 +1,13 @@
 import React from 'react';
-import Recentposts from "../components/Recentposts";
+import RecentPosts from "../components/RecentPosts";
+import QuoteSection from '../components/QuoteSection';
 
 const Home = () => {
   return (
     <div>
-      <Recentposts />
+      <RecentPosts />
+      <QuoteSection />
+
     </div>
   );
 };
