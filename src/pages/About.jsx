@@ -21,7 +21,10 @@ const About = () => {
                     <img src="/images/IMG_7353.jpeg" alt="-" className="w-full h-full object-cover rounded"></img>
                 </div>
 
-                <h2 className="ml-44 text-[#54473F] italic text-5xl text-center font-serif">Hello, World!</h2>
+                <div>
+                    <h2 className="ml-40 text-[#54473F] italic text-5xl font-serif">Hello, World!</h2>
+                    <h3 className="ml-64 mt-8 text-[#AF8260] italic text-xl font-serif">Who am I?</h3>
+                </div>
 
             </div>
         </div>
