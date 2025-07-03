@@ -16,14 +16,29 @@ const About = () => {
             </svg>
             </h1>
 
-            <div className="flex ml-40 mt-6 gap-16">
+            <div className="flex ml-40 mt-6">
                 <div className="w-[440px] aspect-[2/3]">
                     <img src="/images/IMG_7353.jpeg" alt="-" className="w-full h-full object-cover rounded"></img>
                 </div>
 
-                <div>
-                    <h2 className="ml-40 text-[#54473F] italic text-5xl font-serif">Hello, World!</h2>
-                    <h3 className="ml-64 mt-8 text-[#AF8260] italic text-xl font-serif">Who am I?</h3>
+                <div className="mx-auto text-center max-w-xl">
+                    <h2 className="text-[#54473F] italic text-5xl font-serif">Hello, World!</h2>
+                    <h3 className="mt-8 text-[#AF8260] italic text-xl font-serif">Who am I?</h3>
+                    <p className="mt-6 text-[#54473F] font-light">
+                        I'm Lily, a developer so passionate about books to the point of creating a web page to share my reviews.
+                        <br /> <br />
+                        To be completely honest, I'm not a huge fan of social media and I've always wanted a place where I could share what I read and make an honest review without having people leave shitty comments on my posts because I simply gave my opinion on something.
+                        <br /> <br />
+                        As an adult, I crave the peace I never had as a child. That being said, I'd rather stay away from places and people like that.
+                        <br /> <br />
+                        Before I became a developer, I worked as a psychoanalyst but left the field because I didn't agree with the way some things "had to be done" — yes, I am THAT opinionated, and I'm proud of it. My mind is my own.
+                        <br /> <br/>
+                        When I'm not coding or reading, you'll probably find me playing Stardew Valley.
+                        <br /> <br />
+                        I'm also a cat mom, haughty cook, horror fan, lazy yogi & nature lover.
+                        <br /> <br />
+                        Welcome to my Haunted Musings!
+                    </p>
                 </div>
 
             </div>
