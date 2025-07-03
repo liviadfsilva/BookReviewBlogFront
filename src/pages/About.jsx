@@ -16,15 +16,15 @@ const About = () => {
             </svg>
             </h1>
 
-            <div className="flex ml-40 mt-6">
+            <div className="flex items-start ml-40 mt-6">
                 <div className="w-[440px] aspect-[2/3]">
                     <img src="/images/IMG_7353.jpeg" alt="-" className="w-full h-full object-cover rounded"></img>
                 </div>
 
                 <div className="mx-auto text-center max-w-xl">
                     <h2 className="text-[#54473F] italic text-5xl font-serif">Hello, World!</h2>
-                    <h3 className="mt-8 text-[#AF8260] italic text-xl font-serif">Who am I?</h3>
-                    <p className="mt-6 text-[#54473F] font-light">
+                    <h3 className="mt-8 text-[#AF8260] italic text-2xl font-serif">Who am I?</h3>
+                    <p className="mt-6 text-[#54473F] font-light text-left">
                         I'm Lily, a developer so passionate about books to the point of creating a web page to share my reviews.
                         <br /> <br />
                         To be completely honest, I'm not a huge fan of social media. And I despise the idea of having random people elsewhere leaving awful comments on my reviews just because I said what I thought. My soul is ancient, I seek peace and a place to be myself without being bothered. That's why I created this blog.
