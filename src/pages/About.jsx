@@ -27,7 +27,7 @@ const About = () => {
                     <p className="mt-6 text-[#54473F] font-light text-left">
                         I'm Lily, a developer so passionate about books to the point of creating a web page to share my reviews.
                         <br /> <br />
-                        To be completely honest, I'm not a huge fan of social media. And I despise the idea of having random people elsewhere leaving awful comments on my reviews just because I said what I thought. My soul is ancient, I seek peace and a place to be myself without being bothered. That's why I created this blog.
+                        To be completely honest, I'm not a huge fan of social media. And I despise the idea of having random people on random apps leaving awful comments on my reviews just because I said what I thought. My soul is ancient, I seek peace and a place to be myself without being bothered. That's why I created this blog.
                         <br /> <br />
                         Before I became a developer, I worked as a psychoanalyst. However, I left the field because I didn't agree with the way some things "had to be done." Yes, I am THAT opinionated. My mind is my own.
                         <br /> <br/>
