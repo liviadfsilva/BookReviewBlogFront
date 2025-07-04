@@ -18,22 +18,23 @@ const RecentPosts = () => {
       </h1>
       <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">Fresh On The Shelf</h2>
       <div className="flex justify-center gap-24 mt-8">
-        <div className="w-[340px] aspect[2/3]">
+        <div className="w-[340px] aspect-[2/3]">
           <img src="https://m.media-amazon.com/images/I/71M937NDDtL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
           <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">White horse Black Nights by Evie Marceau: Book Review</h1>
         </div>
         
-        <div className="w-[340px] aspect[2/3]">
+        <div className="w-[340px] aspect-[2/3]">
           <img src="https://m.media-amazon.com/images/I/71f++uAekKL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
           <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">The Fabric of Our Souls by K. M. Moronova: Book Review</h1>
         </div>
 
-        <div className="w-[340px] aspect[2/3]">
+        <div className="w-[340px] aspect-[2/3]">
           <img src="https://m.media-amazon.com/images/I/91zXBCFQSsL.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
           <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">The Sanatorium by Sarah Pearse: Book Review</h1>
         </div>
+
       </div>
-      <div className="mt-36 flex justify-center mb-6">
+      <div className="mt-16 flex justify-center mb-6">
         <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase"><Link to="/book-reviews">Older Reviews ➛</Link></button>
       </div>
     </div>
