@@ -81,7 +81,7 @@ const Navbar = () => {
                     </li>
 
                     <li>
-                        <Link to="/blog" className="hover:bg-[#e7cbb6] ml-10 px-3 py-1">Blog</Link>
+                        <Link to="/random-musings/all-posts" className="hover:bg-[#e7cbb6] ml-10 px-3 py-1">Blog</Link>
                     </li>
 
                     <li>

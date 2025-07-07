@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import BookReviewPost from "./pages/BookReviewPost";
 import ReviewsPage from "./pages/ReviewsPage";
+import BlogPage from "./pages/BlogPage";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/book-review/post/1" element={<BookReviewPost />} />
             <Route path="/book-reviews/all-reviews" element={<ReviewsPage />} />
+            <Route path="/random-musings/all-posts" element={<BlogPage />} />
           </Routes>
         </main>
         <Footer />
