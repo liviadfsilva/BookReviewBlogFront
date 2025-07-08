@@ -1,6 +1,6 @@
 import React from "react";
 
-const BookTracker = () => {
+const AdminHome = () => {
     return (
         <div>
             <h1 className="text-[#AF8260] text-center animate-bounce mt-14">
@@ -17,19 +17,21 @@ const BookTracker = () => {
             </h1>
 
             <div className="text-center">
-                <h2 className="text-[#54473F] uppercase italic text-5xl font-serif mt-10 mb-12">Download My Book Tracker</h2>
-                <p>
-                    Start tracking your reads today with my minimalist book tracker.
-                    <br /><br />
-                    Don't worry, it's free!
-                </p>
+                <h2 className="text-[#54473F] uppercase italic text-5xl font-serif mt-10 mb-12">Welcome Back, Lily!</h2>
+                <h3 className="text-[#AF8260] italic text-2xl font-serif">What's on your mind today?</h3>
             </div>
-            
-            <div className="mt-10 flex justify-center mb-6">
-                <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase">Get Book Tracker</button>
+
+            <div className="flex justify-center mt-12">
+                <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase">
+                    New Book Review
+                </button>
+
+                <button className="bg-[#e7cbb6] p-4 py-3 px-6 ml-16 rounded text-[#54473F] font-semibold text-base uppercase">
+                    New Blog Post
+                </button>
             </div>
         </div>
     );
 };
 
-export default BookTracker;
+export default AdminHome;
