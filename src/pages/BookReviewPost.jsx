@@ -16,7 +16,7 @@ const BookReviewPost = () => {
             </svg>
             </h1>
 
-            <div className="flex items-start ml-40 mt-6">
+            <div className="flex items-start ml-40 mt-6 mb-6">
                 <div className="w-[440px] aspect-[2/3]">
                     <img src="https://m.media-amazon.com/images/I/71M937NDDtL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
                     <h2 className="text-[#AF8260] italic text-3xl font-serif leading-loose mt-2">Rating: ⭐️ ⭐️ ⭐️ ⭐️ <br /> Spice Level: 🌶️ 🌶️ 🌶️</h2>
