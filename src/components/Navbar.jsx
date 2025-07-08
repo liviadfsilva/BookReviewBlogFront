@@ -81,11 +81,11 @@ const Navbar = () => {
                     </li>
 
                     <li>
-                        <Link to="/random-musings/all-posts" className="hover:bg-[#e7cbb6] ml-10 px-3 py-1">Blog</Link>
+                        <Link to="/book-tracker" className="hover:bg-[#e7cbb6] ml-10 px-3 py-1">Book Tracker</Link>
                     </li>
 
                     <li>
-                        <Link to="/contact" className="hover:bg-[#e7cbb6] ml-10 px-3 py-1">Contact</Link>
+                        <Link to="/random-musings/all-posts" className="hover:bg-[#e7cbb6] ml-10 px-3 py-1">Blog</Link>
                     </li>
                 </ul>
             </div>

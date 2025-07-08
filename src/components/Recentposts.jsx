@@ -20,17 +20,17 @@ const RecentPosts = () => {
       <div className="flex justify-center gap-24 mt-8">
         <div className="w-[340px] aspect-[2/3]">
           <img src="https://m.media-amazon.com/images/I/71M937NDDtL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">White horse Black Nights by Evie Marceau: Book Review</h1>
+          <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">White horse Black Nights by Evie Marceau: Book Review</h3>
         </div>
         
         <div className="w-[340px] aspect-[2/3]">
           <img src="https://m.media-amazon.com/images/I/71f++uAekKL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">The Fabric of Our Souls by K. M. Moronova: Book Review</h1>
+          <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">The Fabric of Our Souls by K. M. Moronova: Book Review</h3>
         </div>
 
         <div className="w-[340px] aspect-[2/3]">
           <img src="https://m.media-amazon.com/images/I/91zXBCFQSsL.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">The Sanatorium by Sarah Pearse: Book Review</h1>
+          <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">The Sanatorium by Sarah Pearse: Book Review</h3>
         </div>
 
       </div>

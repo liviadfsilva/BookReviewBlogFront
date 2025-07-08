@@ -7,7 +7,7 @@ import Footer from "./components/Footer"
 // Pages
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
+import BookTracker from "./pages/BookTracker";
 import Login from "./pages/Login";
 import BookReviewPost from "./pages/BookReviewPost";
 import ReviewsPage from "./pages/ReviewsPage";
@@ -23,7 +23,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/book-tracker" element={<BookTracker />} />
             <Route path="/login" element={<Login />} />
             <Route path="/book-review/post/1" element={<BookReviewPost />} />
             <Route path="/book-reviews/all-reviews" element={<ReviewsPage />} />
