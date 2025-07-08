@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ReviewsPage = () => {
     return (
@@ -21,17 +22,17 @@ const ReviewsPage = () => {
             <div className="flex justify-center gap-24 mt-8">
                 <div className="w-[340px] aspect-[2/3]">
                 <img src="https://m.media-amazon.com/images/I/71M937NDDtL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-                <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">White horse Black Nights by Evie Marceau: Book Review</h1>
+                <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">White horse Black Nights by Evie Marceau: Book Review</Link></h1>
                 </div>
                 
                 <div className="w-[340px] aspect-[2/3]">
                 <img src="https://m.media-amazon.com/images/I/71f++uAekKL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-                <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">The Fabric of Our Souls by K. M. Moronova: Book Review</h1>
+                <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">The Fabric of Our Souls by K. M. Moronova: Book Review</Link></h1>
                 </div>
 
                 <div className="w-[340px] aspect-[2/3]">
                 <img src="https://m.media-amazon.com/images/I/91zXBCFQSsL.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-                <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">The Sanatorium by Sarah Pearse: Book Review</h1>
+                <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">The Sanatorium by Sarah Pearse: Book Review</Link></h1>
                 </div>
             </ div>
         </div>

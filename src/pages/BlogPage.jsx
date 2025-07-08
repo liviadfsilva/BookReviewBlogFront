@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const BlogPage = () => {
   return (
@@ -19,19 +20,19 @@ const BlogPage = () => {
       <div className="flex justify-center gap-16 mt-8">
         <div className="w-[350px] h-[350px]">
           <img src="https://images.unsplash.com/photo-1609828435263-e9dc691d630b?q=80&w=2034&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="-" className="w-full h-full object-cover rounded"></img>
-          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">The Lore Behind the Crow</h1>
+          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/blog/post/1">The Lore Behind the Crow</Link></h1>
           <p className="text-[#AF8260] mt-1">They're called a murder for a reason.</p>
         </div>
         
         <div className="w-[350px] h-[350px]">
           <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0fGVufDB8fDB8fHww" alt="-" className="w-full h-full object-cover rounded"></img>
-          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">Inside the Mind of a Cat</h1>
+          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/blog/post/1">Inside the Mind of a Cat</Link></h1>
           <p className="text-[#AF8260] mt-1">What do they think?</p>
         </div>
 
         <div className="w-[350px] h-[350px]">
           <img src="https://images.unsplash.com/photo-1564355808539-22fda35bed7e?q=80&w=2047&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="-" className="w-full h-full object-cover rounded"></img>
-          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">The Best Brownie Recipe</h1>
+          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/blog/post/1">The Best Brownie Recipe</Link></h1>
           <p className="text-[#AF8260] mt-1">It's to die for.</p>
         </div>
       </div>
