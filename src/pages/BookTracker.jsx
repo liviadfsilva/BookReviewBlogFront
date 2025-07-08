@@ -18,9 +18,10 @@ const BookTracker = () => {
 
             <div className="text-center">
                 <h2 className="text-[#54473F] uppercase italic text-5xl font-serif mt-10 mb-12">Download My Book Tracker</h2>
-                <p>
-                    Start tracking your reads today with my minimalist book tracker.
-                    <br /><br />
+                <p className="text-[#AF8260] italic text-2xl font-serif">
+                    Keep track of your reads with my minimalist book tracker.
+                </p>
+                <p className="text-[#54473F] font-light mt-6">
                     Don't worry, it's free!
                 </p>
             </div>
