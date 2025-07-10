@@ -51,7 +51,7 @@ const reviews = [
         author: "Rachel Smythe",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0PUUpaaL3zpElV2sckEZFJCZVmRK2ITTEYGSLORERwuO7t0KX", 
     }
-]
+];
 
 const ReviewsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);

@@ -19,6 +19,11 @@ const RecentPosts = () => {
       <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">Fresh On The Shelf</h2>
       <div className="flex justify-center gap-24 mt-8">
         <div className="w-[340px] aspect-[2/3]">
+          <img src="https://m.media-amazon.com/images/I/71DCQpyjfeL._SL1500_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
+          <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">Let Me In by John Ajvide Lindqvist: Book Review</Link></h3>
+        </div>
+
+        <div className="w-[340px] aspect-[2/3]">
           <img src="https://m.media-amazon.com/images/I/71M937NDDtL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
           <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">White horse Black Nights by Evie Marceau: Book Review</Link></h3>
         </div>
@@ -26,11 +31,6 @@ const RecentPosts = () => {
         <div className="w-[340px] aspect-[2/3]">
           <img src="https://m.media-amazon.com/images/I/71f++uAekKL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
           <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">The Fabric of Our Souls by K. M. Moronova: Book Review</Link></h3>
-        </div>
-
-        <div className="w-[340px] aspect-[2/3]">
-          <img src="https://m.media-amazon.com/images/I/91zXBCFQSsL.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-          <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">The Sanatorium by Sarah Pearse: Book Review</Link></h3>
         </div>
 
       </div>
