@@ -1,7 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Pagination from "../components/Pagination";
+
+const reviews = [
+    {
+        id: 1,
+        title: "Let Me In",
+        author: "John Ajvide Lindqvist",
+        image: "https://m.media-amazon.com/images/I/71DCQpyjfeL._SL1500_.jpg",
+    },
+    {
+        id: 2,
+        title: "White Horse Black Nights",
+        author: "Evie Marceau",
+        image: "https://m.media-amazon.com/images/I/71M937NDDtL._UF1000,1000_QL80_.jpg",
+    },
+    {
+        id: 3,
+        title: "The Fabric of Our Souls",
+        author: "K. M. Moronova",
+        image: "https://m.media-amazon.com/images/I/71f++uAekKL._UF1000,1000_QL80_.jpg",
+    },
+    {
+        id: 4,
+        title: "The Sanatorium",
+        author: "Sarah Pearse",
+        image: "https://m.media-amazon.com/images/I/91zXBCFQSsL.jpg",
+    },
+    {
+        id: 5,
+        title: "Lore Olympus Vol. II",
+        author: "Rachel Smythe",
+        image: "https://m.media-amazon.com/images/I/81hgMa0Bh1L._SL1500_.jpg",
+    },
+    {
+        id: 6,
+        title: "Katie the Catsitter",
+        author: "Colleen AF Venable",
+        image: "https://m.media-amazon.com/images/I/91JxHUo8juL._SL1500_.jpg",
+    },
+    {
+        id: 7,
+        title: "The Never King",
+        author: "Nikki St. Crowe",
+        image: "https://m.media-amazon.com/images/I/91eHSa0sVYL._SL1500_.jpg", 
+    },
+    {
+        id: 8,
+        title: "Lore Olympus Vol. I",
+        author: "Rachel Smythe",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0PUUpaaL3zpElV2sckEZFJCZVmRK2ITTEYGSLORERwuO7t0KX", 
+    }
+]
 
 const ReviewsPage = () => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const reviewsPerPage = 6;
+
+    const indexOfLastReview = currentPage * reviewsPerPage;
+    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+    const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
+
+    const totalPages = Math.ceil(reviews.length / reviewsPerPage);
+
     return (
         <div>
             <h1 className="text-[#AF8260] text-center animate-bounce mt-14">
@@ -19,37 +80,26 @@ const ReviewsPage = () => {
 
             <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">All Reviews</h2>
 
+            
             <div className="flex justify-center flex-wrap gap-x-24 gap-y-16 my-8">
-                <div className="w-[340px] aspect-[2/3]">
-                    <img src="https://m.media-amazon.com/images/I/71M937NDDtL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-                    <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">White horse Black Nights by Evie Marceau: Book Review</Link></h1>
-                </div>
-                
-                <div className="w-[340px] aspect-[2/3]">
-                    <img src="https://m.media-amazon.com/images/I/71f++uAekKL._UF1000,1000_QL80_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-                    <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">The Fabric of Our Souls by K. M. Moronova: Book Review</Link></h1>
-                </div>
+                {currentReviews.map((review) => (
+                    <div key={review.id} className="w-[340px]">
+                        <div className="aspect-[2/3] overflow-hidden rounded">
+                            <img src={review.image} className="w-full h-full object-cover rounded"/>
+                        </div>
 
-                <div className="w-[340px] aspect-[2/3]">
-                    <img src="https://m.media-amazon.com/images/I/91zXBCFQSsL.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-                    <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">The Sanatorium by Sarah Pearse: Book Review</Link></h1>
-                </div>
+                        <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">
+                            <Link to="/book-review/post/1">{review.title} by {review.author}: Book Review</Link>
+                        </h3>
+                    </div>
+                ))}
+            </div>
 
-                <div className="w-[340px] aspect-[2/3]">
-                    <img src="https://m.media-amazon.com/images/I/81hgMa0Bh1L._SL1500_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-                    <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">Lore Olympus Vol. II by Rachel Smythe: Book Review</Link></h1>
-                </div>
-                
-                <div className="w-[340px] aspect-[2/3]">
-                    <img src="https://m.media-amazon.com/images/I/91JxHUo8juL._SL1500_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-                    <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">Katie the Catsitter by Colleen AF Venable: Book Review</Link></h1>
-                </div>
+            <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={setCurrentPage} />
 
-                <div className="w-[340px] aspect-[2/3]">
-                    <img src="https://m.media-amazon.com/images/I/91eHSa0sVYL._SL1500_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-                    <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/book-review/post/1">The Never King by Nikki St. Crowe: Book Review</Link></h1>
-                </div>
-            </ div>
         </div>
     );
 };
