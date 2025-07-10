@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AdminHome = () => {
     return (
@@ -23,11 +24,11 @@ const AdminHome = () => {
 
             <div className="flex justify-center mt-12">
                 <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase">
-                    New Book Review
+                    <Link to="/make-book-review">New Book Review</Link>
                 </button>
 
                 <button className="bg-[#e7cbb6] p-4 py-3 px-6 ml-16 rounded text-[#54473F] font-semibold text-base uppercase">
-                    New Blog Post
+                    <Link to="/make-blog-post">New Blog Post</Link>
                 </button>
             </div>
         </div>
