@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
     return (
@@ -26,9 +27,7 @@ const Login = () => {
             <div className="flex justify-center mt-8">
                 <button
                 type="submit"
-                className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase">
-                    Let Me In
-                </button>
+                className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase"><Link to="/admin">Let Me In</Link></button>
             </div>
         </div>
     );
