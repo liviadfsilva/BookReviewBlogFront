@@ -18,7 +18,7 @@ const AdminHome = () => {
             </h1>
 
             <div className="text-center">
-                <h2 className="text-[#54473F] uppercase italic text-5xl font-serif mt-10 mb-12">Welcome Back, Lily!</h2>
+                <h2 className="text-[#54473F] uppercase italic text-5xl font-serif mt-10 mb-12">Welcome Back!</h2>
                 <h3 className="text-[#AF8260] italic text-2xl font-serif">What's on your mind today?</h3>
             </div>
 
