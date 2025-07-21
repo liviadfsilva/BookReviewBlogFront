@@ -24,7 +24,7 @@ const BookReviewPost = () => {
 
                 <div className="mx-auto text-center max-w-xl">
                     <h3 className="text-[#54473F] italic text-5xl font-serif leading-normal">White Horse Black Nights <br/> by Evie Marceau</h3>
-                    <h4 className="mt-6 text-[#AF8260] italic text-2xl font-serif">Book Review</h4>
+                    <h4 className="mt-6 text-[#AF8260] italic text-2xl font-serif">Fantasy • Paranormal • Romance</h4>
                     <p className="mt-6 text-[#54473F] font-light text-left">
                         I love it when I go completely blind into a book and it surprises me in a very good way. I'm back to my audiobook era and this one did the trick for me.
                         <br /> <br />

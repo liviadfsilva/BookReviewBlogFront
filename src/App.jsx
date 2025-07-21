@@ -16,6 +16,8 @@ import AdminHome from "./pages/AdminHome";
 import BlogPostPage from "./pages/BlogPostPage";
 import MakeReview from "./pages/MakeReview";
 import MakePost from "./pages/MakePost";
+import RatingSystem from "./pages/RatingSystem";
+import FiveStarReviews from "./pages/FiveStarReviews";
 
 export default function App() {
   return (
@@ -36,6 +38,8 @@ export default function App() {
             <Route path="/blog/post/1" element={<BlogPostPage />} />
             <Route path="/make-book-review" element={<MakeReview />} />
             <Route path="/make-blog-post" element={<MakePost />} />
+            <Route path="/book-reviews/rating-system" element={<RatingSystem />} />
+            <Route path="/book-reviews/5-star-reviews" element={<FiveStarReviews />} />
           </Routes>
         </main>
         <Footer />
