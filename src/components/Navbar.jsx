@@ -49,11 +49,11 @@ const Navbar = () => {
                     </li>
 
                     <li>
-                        <Link to="/book-tracker" className="hover:bg-[#e7cbb6] ml-10 px-3 py-1">Book Tracker</Link>
+                        <Link to="/categories" className="hover:bg-[#e7cbb6] ml-10 px-3 py-1">Categories</Link>
                     </li>
 
                     <li>
-                        <Link to="/random-musings/all-posts" className="hover:bg-[#e7cbb6] ml-10 px-3 py-1">Blog</Link>
+                        <Link to="/blog/all-posts" className="hover:bg-[#e7cbb6] ml-10 px-3 py-1">Blog</Link>
                     </li>
                 </ul>
             </div>
