@@ -84,16 +84,20 @@ const ReviewsPage = () => {
             <div className="flex justify-center flex-wrap gap-x-24 gap-y-16 my-8">
                 {currentReviews.map((review) => (
                     <div key={review.id} className="w-[340px]">
-                        <Link to="/book-review/post/1" className="aspect-[2/3] overflow-hidden rounded block">
-                            <img
-                            src={review.image}
-                            className="w-full h-full object-cover rounded"
-                            />
-                        </Link>
+                        <Link 
+                        to="/book-review/post/1"
+                        >
+                            <div className="aspect-[2/3] overflow-hidden rounded block">
+                                <img
+                                src={review.image}
+                                className="w-full h-full object-cover rounded"
+                                />
+                            </div>
 
                         <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">
-                            <Link to="/book-review/post/1">{review.title} by {review.author}: Book Review</Link>
+                            {review.title} by {review.author}: Book Review
                         </h3>
+                        </Link>
                     </div>
                 ))}
             </div>

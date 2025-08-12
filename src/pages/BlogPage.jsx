@@ -78,20 +78,22 @@ const BlogPage = () => {
         {currentPosts.map((post) => (
           <div key={post.id} className="w-[350px]">
 
-            <div className="h-[350px] overflow-hidden rounded">
-              <Link
-              to="/blog/post/1"
-              >
+            <Link
+            to="/blog/post/1"
+            >
+
+              <div className="h-[350px] overflow-hidden rounded">
                 <img src={post.image} className="w-full h-full object-cover rounded"/>
-              </Link>
             </div>
 
             <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">
-                <Link to="/blog/post/1">{post.title}</Link>
+                {post.title}
             </h3>
             <p className="text-[#AF8260] mt-1">
-              <Link to="/blog/post/1">{post.subtitle}</Link>
+              {post.subtitle}
             </p>
+            
+            </Link>
 
           </div>
         ))}
