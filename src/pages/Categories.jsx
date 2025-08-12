@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaCampground, FaCity, FaHeart, FaTheaterMasks, FaBookOpen, FaUserSecret, FaNewspaper, FaScroll, FaGraduationCap } from "react-icons/fa";
 import { GiCarousel, GiCrossedSwords, GiCandleFlame, GiDrop, GiLightThornyTriskelion, GiBrokenSkull, GiGreekTemple, GiChiliPepper, GiAstronautHelmet } from "react-icons/gi";
 
@@ -21,95 +22,151 @@ const Categories = () => {
             <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">Categories</h2>
 
             <div className="flex justify-center flex-wrap gap-y-24 mt-16">
-                <div className="basis-[30%] flex flex-col items-center">
-                    <FaCampground className="text-9xl text-[#54473F]"/>
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Adventure</p>
-                </div>
+                <Link 
+                to="/categories/adventure" 
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <FaCampground className="text-9xl text-[#54473F]" />
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">
+                    Adventure
+                </p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <GiCarousel className="text-9xl text-[#54473F]"/>
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Children's</p>
-                </div>
+                <Link
+                to="/categories/childrens"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <GiCarousel className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Children's</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <FaCity className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Contemporary</p>
-                </div>
+                <Link
+                to="/categories/contemporary"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <FaCity className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Contemporary</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <GiLightThornyTriskelion className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Dark Romance</p>
-                </div>
+                <Link
+                to="/categories/dark-romance"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <GiLightThornyTriskelion className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Dark Romance</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <FaTheaterMasks className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Drama</p>
-                </div>
+                <Link
+                to="/categories/drama"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <FaTheaterMasks className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Drama</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <GiChiliPepper className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Erotica</p>
-                </div>
+                <Link
+                to="/categories/erotica"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <GiChiliPepper className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Erotica</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <GiCrossedSwords className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Fantasy</p>
-                </div>
+                <Link
+                to="/categories/fantasy"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <GiCrossedSwords className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Fantasy</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <FaBookOpen className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Graphic Novel</p>
-                </div>
+                <Link
+                to="/categories/graphic-novel"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <FaBookOpen className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Graphic Novel</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <GiGreekTemple className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Historical</p>
-                </div>
+                <Link
+                to="/categories/historical"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <GiGreekTemple className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Historical</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <GiDrop className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Horror</p>
-                </div>
+                <Link
+                to="/categories/horror"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <GiDrop className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Horror</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <FaUserSecret className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Mystery</p>
-                </div>
+                <Link
+                to="/categories/mystery"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <FaUserSecret className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Mystery</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <FaNewspaper className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Nonfiction</p>
-                </div>
+                <Link
+                to="/categories/nonfiction"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <FaNewspaper className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Nonfiction</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <FaScroll className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Poetry</p>
-                </div>
+                <Link
+                to="/categories/poetry"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <FaScroll className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Poetry</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <FaHeart className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Romance</p>
-                </div>
+                <Link
+                to="/categories/romance"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <FaHeart className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Romance</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <GiAstronautHelmet className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Science Fiction</p>
-                </div>
+                <Link
+                to="/categories/science-fiction"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <GiAstronautHelmet className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Science Fiction</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <GiCandleFlame className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Spirituality</p>
-                </div>
+                <Link
+                to="/categories/spirituality"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <GiCandleFlame className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Spirituality</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <GiBrokenSkull className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Thriller</p>
-                </div>
+                <Link
+                to="/categories/thriller"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <GiBrokenSkull className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Thriller</p>
+                </Link>
 
-                <div className="basis-[30%] flex flex-col items-center">
-                    <FaGraduationCap className="text-9xl text-[#54473F]" />
-                    <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Young Adult</p>
-                </div>
+                <Link
+                to="/categories/young-adult"
+                className="basis-[30%] flex flex-col items-center"
+                >
+                <FaGraduationCap className="text-9xl text-[#54473F]"/>
+                <p className="flex justify-center text-[#AF8260] italic text-xl font-serif mt-6">Young Adult</p>
+                </Link>
             </div>
         </div>
     );
