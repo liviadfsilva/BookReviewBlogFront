@@ -31,7 +31,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/book-review/post/1" element={<BookReviewPost />} />
+            <Route path="/book-review/:id" element={<BookReviewPost />} />
             <Route path="/book-reviews/all-reviews" element={<ReviewsPage />} />
             <Route path="/blog/all-posts" element={<BlogPage />} />
             <Route path="/admin" element={<AdminHome />} />

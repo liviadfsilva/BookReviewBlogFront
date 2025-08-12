@@ -1,61 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../components/Pagination";
 
-const reviews = [
-    {
-        id: 1,
-        title: "Let Me In",
-        author: "John Ajvide Lindqvist",
-        image: "https://m.media-amazon.com/images/I/71DCQpyjfeL._SL1500_.jpg",
-    },
-    {
-        id: 2,
-        title: "White Horse Black Nights",
-        author: "Evie Marceau",
-        image: "https://m.media-amazon.com/images/I/71M937NDDtL._UF1000,1000_QL80_.jpg",
-    },
-    {
-        id: 3,
-        title: "The Fabric of Our Souls",
-        author: "K. M. Moronova",
-        image: "https://m.media-amazon.com/images/I/71f++uAekKL._UF1000,1000_QL80_.jpg",
-    },
-    {
-        id: 4,
-        title: "The Sanatorium",
-        author: "Sarah Pearse",
-        image: "https://m.media-amazon.com/images/I/91zXBCFQSsL.jpg",
-    },
-    {
-        id: 5,
-        title: "Lore Olympus Vol. II",
-        author: "Rachel Smythe",
-        image: "https://m.media-amazon.com/images/I/81hgMa0Bh1L._SL1500_.jpg",
-    },
-    {
-        id: 6,
-        title: "Katie the Catsitter",
-        author: "Colleen AF Venable",
-        image: "https://m.media-amazon.com/images/I/91JxHUo8juL._SL1500_.jpg",
-    },
-    {
-        id: 7,
-        title: "The Never King",
-        author: "Nikki St. Crowe",
-        image: "https://m.media-amazon.com/images/I/91eHSa0sVYL._SL1500_.jpg", 
-    },
-    {
-        id: 8,
-        title: "Lore Olympus Vol. I",
-        author: "Rachel Smythe",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0PUUpaaL3zpElV2sckEZFJCZVmRK2ITTEYGSLORERwuO7t0KX", 
-    }
-];
 
 const ReviewsPage = () => {
+    const [reviews, setReviews] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const reviewsPerPage = 6;
+
+    console.log("reviews state:", reviews);
+
+    useEffect(() => {
+        fetch("http://localhost:5001/api/reviews/")
+        .then(res => {
+            if (!res.ok) {
+                throw new Error("Failed to fetch reviews.");
+            }
+            return res.json();
+        })
+        .then(data => setReviews(data.reverse()))
+        .catch(err => console.error(err));
+    }, []);
 
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
@@ -85,11 +50,11 @@ const ReviewsPage = () => {
                 {currentReviews.map((review) => (
                     <div key={review.id} className="w-[340px]">
                         <Link 
-                        to="/book-review/post/1"
+                        to={`/book-review/${review.id}`}
                         >
                             <div className="aspect-[2/3] overflow-hidden rounded block">
                                 <img
-                                src={review.image}
+                                src={review.cover_url}
                                 className="w-full h-full object-cover rounded"
                                 />
                             </div>
