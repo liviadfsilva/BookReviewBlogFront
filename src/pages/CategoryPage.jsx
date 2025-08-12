@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Pagination from "../components/Pagination";
 
 const reviews = [
@@ -11,49 +11,25 @@ const reviews = [
     },
     {
         id: 2,
-        title: "White Horse Black Nights",
-        author: "Evie Marceau",
-        image: "https://m.media-amazon.com/images/I/71M937NDDtL._UF1000,1000_QL80_.jpg",
-    },
-    {
-        id: 3,
-        title: "The Fabric of Our Souls",
-        author: "K. M. Moronova",
-        image: "https://m.media-amazon.com/images/I/71f++uAekKL._UF1000,1000_QL80_.jpg",
-    },
-    {
-        id: 4,
         title: "The Sanatorium",
         author: "Sarah Pearse",
         image: "https://m.media-amazon.com/images/I/91zXBCFQSsL.jpg",
-    },
-    {
-        id: 5,
-        title: "Lore Olympus Vol. II",
-        author: "Rachel Smythe",
-        image: "https://m.media-amazon.com/images/I/81hgMa0Bh1L._SL1500_.jpg",
-    },
-    {
-        id: 6,
-        title: "Katie the Catsitter",
-        author: "Colleen AF Venable",
-        image: "https://m.media-amazon.com/images/I/91JxHUo8juL._SL1500_.jpg",
-    },
-    {
-        id: 7,
-        title: "The Never King",
-        author: "Nikki St. Crowe",
-        image: "https://m.media-amazon.com/images/I/91eHSa0sVYL._SL1500_.jpg", 
-    },
-    {
-        id: 8,
-        title: "Lore Olympus Vol. I",
-        author: "Rachel Smythe",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0PUUpaaL3zpElV2sckEZFJCZVmRK2ITTEYGSLORERwuO7t0KX", 
     }
 ];
 
-const ReviewsPage = () => {
+const CategoryPage = () => {
+    const { categoryName } = useParams();
+
+    const displayName = categoryName
+    ? categoryName
+        .split("-")
+        .map(word => {
+            if (word.toLowerCase() === "childrens") return "Children's";
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        .join(" ")
+    : "";
+
     const [currentPage, setCurrentPage] = useState(1);
     const reviewsPerPage = 6;
 
@@ -78,7 +54,9 @@ const ReviewsPage = () => {
             </svg>
             </h1>
 
-            <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">All Reviews</h2>
+            <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">
+                { displayName }
+            </h2>
 
             
             <div className="flex justify-center flex-wrap gap-x-24 gap-y-16 my-8">
@@ -107,4 +85,4 @@ const ReviewsPage = () => {
     );
 };
 
-export default ReviewsPage;
+export default CategoryPage;
