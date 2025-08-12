@@ -17,6 +17,7 @@ import MakeReview from "./pages/MakeReview";
 import MakePost from "./pages/MakePost";
 import RatingSystem from "./pages/RatingSystem";
 import FiveStarReviews from "./pages/FiveStarReviews";
+import Categories from "./pages/Categories";
 
 export default function App() {
   return (
@@ -38,6 +39,7 @@ export default function App() {
             <Route path="/make-blog-post" element={<MakePost />} />
             <Route path="/book-reviews/rating-system" element={<RatingSystem />} />
             <Route path="/book-reviews/5-star-reviews" element={<FiveStarReviews />} />
+            <Route path="/categories" element={<Categories />} />
           </Routes>
         </main>
         <Footer />
