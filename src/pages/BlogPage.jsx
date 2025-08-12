@@ -77,15 +77,20 @@ const BlogPage = () => {
       <div className="flex justify-center flex-wrap gap-x-24 gap-y-20 mt-8">
         {currentPosts.map((post) => (
           <div key={post.id} className="w-[350px]">
+
             <div className="h-[350px] overflow-hidden rounded">
+              <Link
+              to="/blog/post/1"
+              >
                 <img src={post.image} className="w-full h-full object-cover rounded"/>
+              </Link>
             </div>
 
             <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">
-                <Link to="/blog-post/1">{post.title}</Link>
+                <Link to="/blog/post/1">{post.title}</Link>
             </h3>
             <p className="text-[#AF8260] mt-1">
-              {post.subtitle}
+              <Link to="/blog/post/1">{post.subtitle}</Link>
             </p>
 
           </div>

@@ -8,21 +8,33 @@ const MusingsPosts = () => {
       <div className="flex justify-center gap-16 mt-8">
 
         <div className="w-[350px] h-[350px]">
-          <img src="https://images.unsplash.com/photo-1729660220527-83a3bba2338d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="-" className="w-full h-full object-cover rounded"></img>
-          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/blog/post/1">My Favorite Horror Movies</Link></h1>
-          <p className="text-[#AF8260] mt-1">I never get tired of them. Ever!</p>
+          <Link
+          to="/blog/post/1"
+          >
+            <img src="https://images.unsplash.com/photo-1729660220527-83a3bba2338d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="-" className="w-full h-full object-cover rounded"></img>
+            <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">My Favorite Horror Movies</h1>
+            <p className="text-[#AF8260] mt-1">I never get tired of them. Ever!</p>
+          </Link>
         </div>
 
         <div className="w-[350px] h-[350px]">
-          <img src="https://images.unsplash.com/photo-1543722530-d2c3201371e7?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="-" className="w-full h-full object-cover rounded"></img>
-          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/blog/post/1">Theory of Relativity</Link></h1>
-          <p className="text-[#AF8260] mt-1">Time is an illusion.</p>
+          <Link
+          to="/blog/post/1"
+          >
+            <img src="https://images.unsplash.com/photo-1729660220527-83a3bba2338d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="-" className="w-full h-full object-cover rounded"></img>
+            <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">My Favorite Horror Movies</h1>
+            <p className="text-[#AF8260] mt-1">I never get tired of them. Ever!</p>
+          </Link>
         </div>
 
         <div className="w-[350px] h-[350px]">
-          <img src="https://images.unsplash.com/photo-1513666639414-f795d25747a8?q=80&w=1036&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="-" className="w-full h-full object-cover rounded"></img>
-          <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4"><Link to="/blog/post/1">The Benefits of Journaling</Link></h1>
-          <p className="text-[#AF8260] mt-1">It can drastically improve your mental health.</p>
+          <Link
+          to="/blog/post/1"
+          >
+            <img src="https://images.unsplash.com/photo-1729660220527-83a3bba2338d?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="-" className="w-full h-full object-cover rounded"></img>
+            <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">My Favorite Horror Movies</h1>
+            <p className="text-[#AF8260] mt-1">I never get tired of them. Ever!</p>
+          </Link>
         </div>
       </div>
       <div className="mt-36 flex justify-center mb-6">
