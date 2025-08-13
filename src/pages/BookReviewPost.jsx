@@ -50,7 +50,15 @@ const BookReviewPost = () => {
             <div className="flex items-start ml-40 mt-6 mb-6">
                 <div className="w-[440px] aspect-[2/3]">
                     <img src={review.cover_url} alt="-" className="w-full h-full object-cover rounded"></img>
-                    <h2 className="text-[#AF8260] italic text-3xl font-serif leading-loose mt-2">Rating: {"⭐️ ".repeat(review.rating)} <br /> Spice Level: {"🌶️ ".repeat(review.spice_rating)}</h2>
+                    <h2 className="text-[#AF8260] italic text-3xl font-serif leading-loose mt-2">
+                    Rating: {"⭐️ ".repeat(review.rating)} 
+                    {review.spice_rating && (
+                        <>
+                        <br />
+                        Spice Level: {"🌶️ ".repeat(review.spice_rating)}
+                        </>
+                    )}
+                    </h2>
                 </div>
 
                 <div className="mx-auto text-center max-w-xl">

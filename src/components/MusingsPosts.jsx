@@ -38,7 +38,7 @@ const MusingsPosts = () => {
         </div>
       </div>
       <div className="mt-36 flex justify-center mb-6">
-        <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase"><Link to="/random-musings/all-posts">More Posts ➛</Link></button>
+        <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase"><Link to="/blog/all-posts">More Posts ➛</Link></button>
       </div>
     </div>
   );
