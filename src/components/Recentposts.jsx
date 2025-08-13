@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const RecentPosts = () => {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5001/api/reviews/latest")
+    .then((res) => res.json())
+    .then((data) => setReviews(data))
+    .catch((err) => console.error("Error fetching latest review:", err))
+  }, []);
+
   return (
     <div>
       <h1 className="text-[#AF8260] text-center animate-bounce mt-14">
@@ -17,35 +26,20 @@ const RecentPosts = () => {
       </svg>
       </h1>
       <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">Fresh On The Shelf</h2>
+
       <div className="flex justify-center gap-24 mt-8">
-        <div className="w-[340px] aspect-[2/3]">
-          <Link
-          to="/book-review/post/1"
-          >
-            <img src="https://m.media-amazon.com/images/I/71DCQpyjfeL._SL1500_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-            <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">Let Me In by John Ajvide Lindqvist: Book Review</h3>
-          </Link>
+        {reviews.map((review) => (
+          <div className="w-[340px] aspect-[2/3]">
+            <Link
+            to={`/book-review/${review.id}`}
+            >
+              <img src={review.cover_url} alt="-" className="w-full h-full object-cover rounded"></img>
+              <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">{review.title} by {review.author}: Book Review</h3>
+            </Link>
         </div>
-
-        <div className="w-[340px] aspect-[2/3]">
-          <Link
-          to="/book-review/post/1"
-          >
-            <img src="https://m.media-amazon.com/images/I/71DCQpyjfeL._SL1500_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-            <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">Let Me In by John Ajvide Lindqvist: Book Review</h3>
-          </Link>
-        </div>
-        
-        <div className="w-[340px] aspect-[2/3]">
-          <Link
-          to="/book-review/post/1"
-          >
-            <img src="https://m.media-amazon.com/images/I/71DCQpyjfeL._SL1500_.jpg" alt="-" className="w-full h-full object-cover rounded"></img>
-            <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">Let Me In by John Ajvide Lindqvist: Book Review</h3>
-          </Link>
-        </div>
-
+        ))}
       </div>
+
       <div className="mt-16 flex justify-center mb-6">
         <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase"><Link to="/book-reviews/all-reviews">Older Reviews ➛</Link></button>
       </div>
