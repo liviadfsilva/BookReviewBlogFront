@@ -35,7 +35,7 @@ export default function App() {
             <Route path="/book-reviews/all-reviews" element={<ReviewsPage />} />
             <Route path="/blog/all-posts" element={<BlogPage />} />
             <Route path="/admin" element={<AdminHome />} />
-            <Route path="/blog/post/1" element={<BlogPostPage />} />
+            <Route path="/blog/post/:id" element={<BlogPostPage />} />
             <Route path="/make-book-review" element={<MakeReview />} />
             <Route path="/make-blog-post" element={<MakePost />} />
             <Route path="/book-reviews/rating-system" element={<RatingSystem />} />

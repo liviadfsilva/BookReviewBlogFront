@@ -1,6 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const BlogPostPage = () => {
+    const { id } = useParams();
+    const [post, setPost] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch(`http://localhost:5001/api/blog-posts/${id}`)
+        .then(res => {
+            if (!res.ok) {
+            throw new Error("Failed to fetch review.");
+            }
+            return res.json();
+        })
+        .then(data => {
+            setPost(data);
+            setLoading(false);
+        })
+        .catch(err => {
+            console.error(err);
+            setLoading(false);
+        });
+    }, [id]);
+
+    if (loading) {
+        return <p>Loading post...</p>;
+    }
+
+    if (!post) {
+        return <p>Post not found.</p>;
+    }
+
     return (
         <div>
             <h1 className="text-[#AF8260] text-center animate-bounce mt-14">
@@ -18,25 +49,17 @@ const BlogPostPage = () => {
 
             <div className="flex items-start ml-40 mt-6">
                 <div className="w-[450px] h-[450px]">
-                    <img src="https://images.unsplash.com/photo-1609828435263-e9dc691d630b?q=80&w=2034&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="-" className="w-full h-full object-cover rounded"></img>
+                    <img src={post.post_img} alt="-" className="w-full h-full object-cover rounded"></img>
                 </div>
 
                 <div className="mx-auto text-center max-w-xl mb-6">
-                    <h2 className="text-[#54473F] italic text-5xl font-serif leading-normal">The Lore Behind the Crow</h2>
-                    <h3 className="mt-6 text-[#AF8260] italic text-2xl font-serif">They're called a murder for a reason.</h3>
-                    <p className="mt-6 text-[#54473F] font-light text-left">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget lacus tempus, iaculis mauris vitae, ullamcorper neque. Nullam et est quis mi imperdiet faucibus. Praesent ut arcu bibendum, elementum ex quis, aliquam augue.
-                        <br /><br />
-                        Ut neque dolor, vehicula id est at, lacinia eleifend elit. Nullam dapibus metus dictum sapien auctor, sed malesuada justo euismod. Phasellus commodo enim scelerisque enim pellentesque, eu ornare ante rutrum. Etiam in convallis purus. Suspendisse finibus nisl a eleifend luctus.
-                        <br/><br />
-                        Nullam non pharetra sem. Sed eget ante vel erat molestie malesuada ut a arcu. Donec faucibus tellus dapibus, congue nibh ac, congue dolor. Suspendisse interdum leo at purus euismod, a placerat lorem efficitur. In tincidunt suscipit magna eu porttitor. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                        <br/><br/>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eget lacus tempus, iaculis mauris vitae, ullamcorper neque. Nullam et est quis mi imperdiet faucibus. Praesent ut arcu bibendum, elementum ex quis, aliquam augue.
-                        <br /><br />
-                        Ut neque dolor, vehicula id est at, lacinia eleifend elit. Nullam dapibus metus dictum sapien auctor, sed malesuada justo euismod. Phasellus commodo enim scelerisque enim pellentesque, eu ornare ante rutrum. Etiam in convallis purus. Suspendisse finibus nisl a eleifend luctus.
-                        <br/><br />
-                        Nullam non pharetra sem. Sed eget ante vel erat molestie malesuada ut a arcu. Donec faucibus tellus dapibus, congue nibh ac, congue dolor. Suspendisse interdum leo at purus euismod, a placerat lorem efficitur. In tincidunt suscipit magna eu porttitor. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                    </p>
+                    <h2 className="text-[#54473F] italic text-5xl font-serif leading-normal">{post.title}</h2>
+                    <h3 className="mt-6 text-[#AF8260] italic text-2xl font-serif">{post.subtitle}</h3>
+                    <div className="mt-6 text-[#54473F] font-light text-left">
+                        <p>
+                            {post.musing}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
