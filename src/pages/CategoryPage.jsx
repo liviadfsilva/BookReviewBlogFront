@@ -1,24 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Pagination from "../components/Pagination";
-
-const reviews = [
-    {
-        id: 1,
-        title: "Let Me In",
-        author: "John Ajvide Lindqvist",
-        image: "https://m.media-amazon.com/images/I/71DCQpyjfeL._SL1500_.jpg",
-    },
-    {
-        id: 2,
-        title: "The Sanatorium",
-        author: "Sarah Pearse",
-        image: "https://m.media-amazon.com/images/I/91zXBCFQSsL.jpg",
-    }
-];
+import axios from "axios";
 
 const CategoryPage = () => {
     const { categoryName } = useParams();
+    const [reviews, setReviews] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const reviewsPerPage = 6;
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:5001/api/reviews/category/${categoryName}`)
+            .then(res => {
+                setReviews(res.data);
+            })
+            .catch(err => console.error(err));
+    }, [categoryName]);
+
 
     const displayName = categoryName
     ? categoryName
@@ -29,9 +28,6 @@ const CategoryPage = () => {
         })
         .join(" ")
     : "";
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const reviewsPerPage = 6;
 
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
@@ -62,11 +58,11 @@ const CategoryPage = () => {
             <div className="flex justify-center flex-wrap gap-x-24 gap-y-16 my-8">
                 {currentReviews.map((review) => (
                     <div key={review.id} className="w-[340px]">
-                        <Link to="/book-review/post/1"
+                        <Link to={`/book-review/${review.id}`}
                         >
                             <div className="aspect-[2/3] overflow-hidden rounded block">
                                 <img
-                                src={review.image}
+                                src={review.cover_url}
                                 className="w-full h-full object-cover rounded"
                                 />
                             </div>
