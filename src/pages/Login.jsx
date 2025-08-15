@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
 
     const navigate = useNavigate();
-    
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            
-            navigate("/admin");
-        };
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setError("");
+
+        axios.post("http://localhost:5001/api/login", { email, password })
+            .then(res => {
+
+                localStorage.setItem("token", res.data.access_token);
+                navigate("/admin");
+            })
+            .catch(err => {
+                console.error(err);
+                setError("Invalid email or password.");
+            });
+    };
 
     return (
         <div>
@@ -20,23 +34,28 @@ const Login = () => {
                     <input
                         className="border border-[#AF8260] rounded text-left py-3 pr-20 pl-2 placeholder-neutral-800 placeholder-opacity-25"
                         type="email" 
-                        id="email" 
-                        placeholder="admin@only.com">
-                    </input>
+                        value={email}
+                        placeholder="admin@only.com"
+                        onChange={e => setEmail(e.target.value)}
+                        required
+                    />
 
                     <input
                         className="border border-[#AF8260] rounded text-left py-3 pr-20 pl-2 placeholder-neutral-800 placeholder-opacity-25"
                         type="password" 
-                        id="password" 
-                        placeholder="What's the hex?">
-                    </input>
+                        value={password} 
+                        placeholder="What's the hex?"
+                        onChange={e => setPassword(e.target.value)}
+                        required
+                    />
+
+                    {error && <p className="text-red-600 text-center">{error}</p>}
 
                     <input 
                     type="submit"
                     value="Let Me In"
-                    className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase w-40 mx-auto cursor-pointer">
-                    </input>
-
+                    className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase w-40 mx-auto cursor-pointer"
+                    />
                 </form>
             </div>
         </div>
