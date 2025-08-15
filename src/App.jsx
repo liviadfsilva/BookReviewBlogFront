@@ -39,7 +39,7 @@ export default function App() {
             <Route path="/make-book-review" element={<MakeReview />} />
             <Route path="/make-blog-post" element={<MakePost />} />
             <Route path="/book-reviews/rating-system" element={<RatingSystem />} />
-            <Route path="/book-reviews/5-star-reviews" element={<FiveStarReviews />} />
+            <Route path="/book-reviews/five-star-reviews" element={<FiveStarReviews />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/categories/:categoryName" element={<CategoryPage />} />
           </Routes>

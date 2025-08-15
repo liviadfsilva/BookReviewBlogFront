@@ -30,7 +30,7 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/book-reviews/5-star-reviews" className="block hover:text-[#AF8260] text-lg">
+                                    <Link to="/book-reviews/five-star-reviews" className="block hover:text-[#AF8260] text-lg">
                                     5-Star Reviews
                                     </Link>
                                 </li>
