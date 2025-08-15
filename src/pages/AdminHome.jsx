@@ -41,6 +41,12 @@ const AdminHome = () => {
                     <Link to="/make-blog-post">New Blog Post</Link>
                 </button>
             </div>
+
+            <div className="flex justify-center">
+                <button className="bg-[#e7cbb6] p-4 py-3 px-6 mt-12 rounded text-[#54473F] font-semibold text-base uppercase">
+                    <Link to="/make-blog-post">LOG OUT</Link>
+                </button>
+            </div>
         </div>
     );
 };

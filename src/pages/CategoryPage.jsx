@@ -13,7 +13,8 @@ const CategoryPage = () => {
         axios
             .get(`http://localhost:5001/api/reviews/category/${categoryName}`)
             .then(res => {
-                setReviews(res.data);
+                const reversed = res.data.reverse(); // reverse the array
+                setReviews(reversed);
             })
             .catch(err => console.error(err));
     }, [categoryName]);
