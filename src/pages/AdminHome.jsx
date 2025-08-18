@@ -43,8 +43,31 @@ const AdminHome = () => {
             </div>
 
             <div className="flex justify-center">
-                <button className="bg-[#e7cbb6] p-4 py-3 px-6 mt-12 rounded text-[#54473F] font-semibold text-base uppercase hover:bg-[#d5b89c]">
-                    <Link to="/make-blog-post">LOG OUT</Link>
+                <button
+                    onClick={async () => {
+                        const token = localStorage.getItem("token");
+
+                        if (token) {
+                        try {
+                            await fetch("http://localhost:5001/api/logout", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Authorization": `Bearer ${token}`
+                            },
+                            });
+                        } catch (err) {
+                            console.error("Logout failed:", err);
+                        }
+
+                        localStorage.removeItem("token");
+                        }
+
+                        navigate("/login");
+                    }}
+                    className="bg-[#e7cbb6] p-4 py-3 px-6 mt-12 rounded text-[#54473F] font-semibold text-base uppercase hover:bg-[#d5b89c]"
+                    >
+                    Log Out
                 </button>
             </div>
         </div>
