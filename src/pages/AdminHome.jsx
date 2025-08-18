@@ -33,17 +33,17 @@ const AdminHome = () => {
             </div>
 
             <div className="flex justify-center mt-12">
-                <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase">
+                <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase hover:bg-[#d5b89c]">
                     <Link to="/make-book-review">New Book Review</Link>
                 </button>
 
-                <button className="bg-[#e7cbb6] p-4 py-3 px-6 ml-16 rounded text-[#54473F] font-semibold text-base uppercase">
+                <button className="bg-[#e7cbb6] p-4 py-3 px-6 ml-16 rounded text-[#54473F] font-semibold text-base uppercase hover:bg-[#d5b89c]">
                     <Link to="/make-blog-post">New Blog Post</Link>
                 </button>
             </div>
 
             <div className="flex justify-center">
-                <button className="bg-[#e7cbb6] p-4 py-3 px-6 mt-12 rounded text-[#54473F] font-semibold text-base uppercase">
+                <button className="bg-[#e7cbb6] p-4 py-3 px-6 mt-12 rounded text-[#54473F] font-semibold text-base uppercase hover:bg-[#d5b89c]">
                     <Link to="/make-blog-post">LOG OUT</Link>
                 </button>
             </div>

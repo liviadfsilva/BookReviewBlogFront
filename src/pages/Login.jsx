@@ -69,7 +69,7 @@ const Login = () => {
                     <input 
                     type="submit"
                     value="Let Me In"
-                    className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase w-40 mx-auto cursor-pointer"
+                    className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase w-40 mx-auto cursor-pointer hover:bg-[#d5b89c]"
                     />
                 </form>
             </div>

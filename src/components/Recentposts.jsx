@@ -41,7 +41,7 @@ const RecentPosts = () => {
       </div>
 
       <div className="mt-16 flex justify-center mb-6">
-        <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase"><Link to="/book-reviews/all-reviews">Older Reviews ➛</Link></button>
+        <button className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase hover:bg-[#d5b89c]"><Link to="/book-reviews/all-reviews">Older Reviews ➛</Link></button>
       </div>
     </div>
   );
