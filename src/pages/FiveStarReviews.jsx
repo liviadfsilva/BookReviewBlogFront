@@ -12,7 +12,7 @@ const FiveStarReviews = () => {
         axios
             .get("http://localhost:5001/api/reviews/five-star-reviews")
             .then(res => {
-                setReviews(res.data);
+                setReviews(res.data.reverse());
             })
             .catch(err => console.error(err));
     }, []);
