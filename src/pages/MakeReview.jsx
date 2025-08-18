@@ -1,15 +1,71 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 
 const MakeReview = () => {
-
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const [title, setTitle] = useState("");
+    const [author, setAuthor] = useState("");
+    const [coverUrl, setCoverUrl] = useState("");
+    const [review, setReview] = useState("");
+    const [rating, setRating] = useState("");
+    const [spiceRating, setSpiceRating] = useState("");
+    const [selectedTags, setSelectedTags] = useState([]);
+    const [allTags, setAllTags] = useState([]);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        const fetchTags = async () => {
+        try {
+            const res = await axios.get("http://localhost:5001/api/tags/");
+            setAllTags(res.data);
+        } catch (err) {
+            console.error("Failed to load tags", err);
+        }
+        };
+        fetchTags();
+    }, []);
+
+    const handleTagChange = (tagId) => {
+        tagId = Number(tagId);
+        if (selectedTags.includes(tagId)) {
+        setSelectedTags(selectedTags.filter((id) => id !== tagId));
+        } else {
+        if (selectedTags.length < 3) {
+            setSelectedTags([...selectedTags, tagId]);
+        } else {
+            alert("You can select up to 3 tags only.");
+        }
+        }
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        navigate("/book-review/post/1");
+        setError("");
+
+        const token = localStorage.getItem("token");
+        if (!token) {
+            setError("You must be logged in to post.");
+            return;
+        }
+
+        const tag_ids = selectedTags
+        const spice_rating_value = spiceRating.trim() === "" ? null : Number(spiceRating);
+
+        try {
+            const res = await axios.post(
+                "http://localhost:5001/api/reviews/",
+                { title, author, cover_url: coverUrl, review, rating, spice_rating: spice_rating_value, tag_ids },
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+
+            const newReviewId = res.data.new_review.id;
+            navigate(`/book-review/${newReviewId}`);
+        } catch (err) {
+            console.error(err);
+            setError(err.response?.data?.error || "Failed to create review.");
+        }
     };
 
     return (
@@ -34,49 +90,79 @@ const MakeReview = () => {
                     <div className="flex gap-x-6">
                         <input 
                             type="text" 
-                            id="book-title" 
-                            placeholder="Book Title" 
+                            placeholder="Book Title"
+                            value={title}
+                            onChange={e => setTitle(e.target.value)}
+                            required
                             className="border border-[#AF8260] rounded text-left py-3 pr-36 pl-2 placeholder-neutral-800 placeholder-opacity-25">
                         </input>
 
                         <input 
-                            type="text" 
-                            id="book-author" 
-                            placeholder="Author" 
+                            type="text"
+                            placeholder="Author"
+                            value={author}
+                            onChange={e => setAuthor(e.target.value)}
+                            required
                             className="border border-[#AF8260] rounded text-left py-3 pr-36 pl-2 placeholder-neutral-800 placeholder-opacity-25">
                         </input>
 
                     </div>
 
                     <input 
-                        type="url" 
-                        id="book-cover" 
-                        placeholder="Book Cover URL" 
+                        type="url"
+                        placeholder="Book Cover URL"
+                        value={coverUrl}
+                        onChange={e => setCoverUrl(e.target.value)}
+                        required
                         className="border border-[#AF8260] rounded text-left py-3 pr-36 pl-2 placeholder-neutral-800 placeholder-opacity-25">
                     </input>
 
                     <textarea
-                        id="book-review"
                         placeholder="Book Review"
+                        value={review}
+                        onChange={e => setReview(e.target.value)}
+                        required
                         className="border border-[#AF8260] rounded p-4 h-[300px] resize-y placeholder-neutral-800 placeholder-opacity-25"
                         />
 
 
                     <div className="flex gap-x-6">
                         <input 
-                            type="text" 
-                            id="book-stars" 
-                            placeholder="Book Rating" 
+                            type="text"
+                            placeholder="Book Rating"
+                            value={rating}
+                            onChange={e => setRating(e.target.value)}
+                            required
                             className="border border-[#AF8260] rounded text-left py-3 pr-36 pl-2 placeholder-neutral-800 placeholder-opacity-25">
                         </input>
 
                         <input 
-                            type="text" 
-                            id="book-spice" 
-                            placeholder="Book Spice Rating" 
+                            type="text"
+                            placeholder="Book Spice Rating"
+                            value={spiceRating}
+                            onChange={e => setSpiceRating(e.target.value)}
                             className="border border-[#AF8260] rounded text-left py-3 pr-36 pl-2 placeholder-neutral-800 placeholder-opacity-25">
                         </input>
                     </div>
+
+                    <div className="columns-3 gap-32">
+                        {allTags.map(tag => (
+                            <div key={tag.id} className="w-[33.33%] mb-2 whitespace-nowrap"> {/* matches two inputs side by side with gap-x-6 */}
+                            <label className="inline-flex items-center gap-2">
+                                <input
+                                type="checkbox"
+                                value={tag.id}
+                                checked={selectedTags.includes(tag.id)}
+                                onChange={() => handleTagChange(tag.id)}
+                                className="accent-[#AF8260]" // optional: color the checkbox
+                                />
+                                <span>{tag.name}</span>
+                            </label>
+                            </div>
+                        ))}
+                    </div>
+
+                    {error && <p className="text-red-600">{error}</p>}
 
                     <input
                         id="submit-review"
