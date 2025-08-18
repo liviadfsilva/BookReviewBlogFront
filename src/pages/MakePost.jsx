@@ -1,14 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const MakePost = () => {
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        navigate("/blog/post/1");
-    };
+    const [title, setTitle] = useState("");
+    const [subtitle, setSubtitle] = useState("");
+    const [postImg, setPostImg] = useState("");
+    const [musing, setMusing] = useState("");
+    const [error, setError] = useState("");
+
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5001/api/blog-posts/",
+        {
+          title,
+          subtitle,
+          post_img: postImg,
+          musing,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const newPostId = res.data.new_blog_post.id;
+      navigate(`/blog/post/${newPostId}`);
+    } catch (err) {
+      console.error(err);
+      setError(err.response?.data?.error || "Failed to create post.");
+    }
+  };
 
     return (
         <div>
@@ -32,38 +63,48 @@ const MakePost = () => {
                     <div className="flex gap-x-6">
                         <input 
                             type="text" 
-                            id="post-title" 
-                            placeholder="Post Title" 
+                            placeholder="Post Title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
                             className="border border-[#AF8260] rounded text-left py-3 pr-36 pl-2 placeholder-neutral-800 placeholder-opacity-25">
                         </input>
 
                         <input 
                             type="text" 
-                            id="post-subtitle" 
-                            placeholder="Subtitle" 
+                            placeholder="Subtitle"
+                            value={subtitle}
+                            onChange={(e) => setSubtitle(e.target.value)}
+                            required
                             className="border border-[#AF8260] rounded text-left py-3 pr-36 pl-2 placeholder-neutral-800 placeholder-opacity-25">
                         </input>
 
                     </div>
 
                     <input 
-                        type="url" 
-                        id="post-image" 
-                        placeholder="Post Image URL" 
+                        type="url"
+                        placeholder="Post Image URL"
+                        value={postImg}
+                        onChange={(e) => setPostImg(e.target.value)}
+                        required
                         className="border border-[#AF8260] rounded text-left py-3 pr-36 pl-2 placeholder-neutral-800 placeholder-opacity-25">
                     </input>
 
                     <textarea
-                        id="book-review"
+                        value={musing}
                         placeholder="Musing"
+                        onChange={(e) => setMusing(e.target.value)}
+                        required
                         className="border border-[#AF8260] rounded p-4 h-[300px] resize-y placeholder-neutral-800 placeholder-opacity-25"
-                        />
+                    />
+
+                    {error && <p className="text-red-600">{error}</p>}
 
                     <input
-                        id="submit-review"
                         type="submit"
-                        value="Submit Review"
-                        className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase cursor-pointer">
+                        id="submit-review"
+                        value="Submit Post"
+                        className="bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold text-base uppercase cursor-pointer text-center">
                     </input>
                 </form>
             </div>
