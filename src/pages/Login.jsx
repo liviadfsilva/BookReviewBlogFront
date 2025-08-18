@@ -9,21 +9,36 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setError("");
+    const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
 
-        axios.post("http://localhost:5001/api/login", { email, password })
-            .then(res => {
+    try {
+        const { data } = await axios.post("http://localhost:5001/api/login", {
+        email: email.trim(),
+        password,
+        });
 
-                localStorage.setItem("token", res.data.access_token);
-                navigate("/admin");
-            })
-            .catch(err => {
-                console.error(err);
-                setError("Invalid email or password.");
-            });
-    };
+        const token = data?.token;
+        if (!token) {
+        setError("Login failed: no token received.");
+        return;
+        }
+
+        localStorage.setItem("token", token);
+
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+        navigate("/admin");
+    } catch (err) {
+        console.error(err);
+        const apiMsg =
+        err?.response?.data?.message ||
+        err?.response?.data?.error ||
+        err?.response?.data?.msg;
+        setError(apiMsg || "Invalid email or password.");
+    }
+};
 
     return (
         <div>

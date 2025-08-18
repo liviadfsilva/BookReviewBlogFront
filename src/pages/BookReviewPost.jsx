@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const BookReviewPost = () => {
+    const token = localStorage.getItem("token");
+    const isLoggedIn = !!token;
+
+    const navigate = useNavigate();
+
+    const handleEdit = () => {
+        navigate(`/edit-post/${review.id}`);
+    };
+
     const { id } = useParams();
     const [review, setReview] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -59,6 +68,15 @@ const BookReviewPost = () => {
                         </>
                     )}
                     </h2>
+
+                    {isLoggedIn && (
+                        <button
+                        onClick={handleEdit}
+                        className="mt-6 w-40 mx-auto bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
+                        >
+                        Edit Post
+                        </button>
+                    )}
                 </div>
 
                 <div className="mx-auto text-center max-w-xl">
