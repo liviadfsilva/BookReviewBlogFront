@@ -147,14 +147,14 @@ const MakeReview = () => {
 
                     <div className="columns-3 gap-32">
                         {allTags.map(tag => (
-                            <div key={tag.id} className="w-[33.33%] mb-2 whitespace-nowrap"> {/* matches two inputs side by side with gap-x-6 */}
+                            <div key={tag.id} className="w-[33.33%] mb-2 whitespace-nowrap">
                             <label className="inline-flex items-center gap-2">
                                 <input
                                 type="checkbox"
                                 value={tag.id}
                                 checked={selectedTags.includes(tag.id)}
                                 onChange={() => handleTagChange(tag.id)}
-                                className="accent-[#AF8260]" // optional: color the checkbox
+                                className="accent-[#AF8260]"
                                 />
                                 <span>{tag.name}</span>
                             </label>
