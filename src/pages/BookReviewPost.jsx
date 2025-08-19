@@ -5,15 +5,42 @@ const BookReviewPost = () => {
     const token = localStorage.getItem("token");
     const isLoggedIn = !!token;
 
+    const { id } = useParams();
+    const [review, setReview] = useState(null);
+    const [loading, setLoading] = useState(true);
+
     const navigate = useNavigate();
 
     const handleEdit = () => {
         navigate(`/edit-post/${review.id}`);
     };
 
-    const { id } = useParams();
-    const [review, setReview] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const handleDelete = async () => {
+        const confirmed = window.confirm("Are you sure you want to delete this review?");
+        if (!confirmed) return;
+        try {
+            const response = await fetch(`http://localhost:5001/api/reviews/${review.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+
+            if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Failed to delete review.");
+        }
+
+            const data = await response.json();
+            console.log(data.msg);
+
+            navigate("/book-reviews/all-reviews");
+        } catch (error) {
+            console.error("Error deleting review:", error);
+            alert(error.message);
+        }
+    };
 
     useEffect(() => {
         fetch(`http://localhost:5001/api/reviews/${id}`)
@@ -70,19 +97,28 @@ const BookReviewPost = () => {
                     </h2>
 
                     {isLoggedIn && (
-                        <button
-                        onClick={handleEdit}
-                        className="mt-6 w-40 mx-auto bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
-                        >
-                        Edit Post
-                        </button>
+                        <div className="mt-6 flex justify-center gap-16">
+                            <button
+                                onClick={handleEdit}
+                                className="w-40 bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
+                            >
+                                Edit Post
+                            </button>
+
+                            <button
+                                onClick={handleDelete}
+                                className="w-40 bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
+                            >
+                                Delete Post
+                            </button>
+                        </div>
                     )}
                 </div>
 
                 <div className="mx-auto text-center max-w-xl">
                     <h3 className="text-[#54473F] italic text-5xl font-serif leading-normal">{review.title} <br/> by {review.author}</h3>
                     <h4 className="mt-6 text-[#AF8260] italic text-2xl font-serif">{review.tag_names.join(" • ")}</h4>
-                    <div className="mt-6 text-[#54473F] font-light text-left">
+                    <div className="mt-6 text-[#54473F] font-light text-left whitespace-pre-line">
                         <p>
                             {review.review}
                         </p>

@@ -5,15 +5,43 @@ const BlogPostPage = () => {
     const token = localStorage.getItem("token");
     const isLoggedIn = !!token;
 
+    const { id } = useParams();
+    const [post, setPost] = useState(null);
+    const [loading, setLoading] = useState(true);
+
     const navigate = useNavigate();
 
     const handleEdit = () => {
         navigate(`/edit-post/${post.id}`);
     };
 
-    const { id } = useParams();
-    const [post, setPost] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const handleDelete = async () => {
+        const confirmed = window.confirm("Are you sure you want to delete this post?");
+        if (!confirmed) return;
+
+        try {
+            const response = await fetch(`http://localhost:5001/api/blog-posts/${post.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+
+            if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || "Failed to delete review.");
+        }
+
+            const data = await response.json();
+            console.log(data.msg);
+
+            navigate("/blog/all-posts");
+        } catch (error) {
+            console.error("Error deleting review:", error);
+            alert(error.message);
+        }
+    };
 
     useEffect(() => {
         fetch(`http://localhost:5001/api/blog-posts/${id}`)
@@ -57,7 +85,6 @@ const BlogPostPage = () => {
             </h1>
 
             <div className="flex items-start ml-40 mt-6">
-                {/* <div className="flex items-start ml-40 mt-6 gap-x-6"> */}
                 <div className="flex flex-col w-[450px]">
                     <img
                         src={post.post_img}
@@ -66,19 +93,28 @@ const BlogPostPage = () => {
                     />
 
                     {isLoggedIn && (
-                        <button
-                        onClick={handleEdit}
-                        className="mt-8 w-40 mx-auto bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
-                        >
-                        Edit Post
-                        </button>
+                        <div className="mt-6 flex justify-center gap-10"> 
+                            <button
+                                onClick={handleEdit}
+                                className="w-40 bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
+                                >
+                                Edit Post
+                            </button>
+
+                            <button
+                                onClick={handleDelete}
+                                className="w-40 bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
+                                >
+                                Delete Post
+                            </button>
+                        </div>
                     )}
                 </div>
 
                 <div className="mx-auto text-center max-w-xl mb-6">
                     <h2 className="text-[#54473F] italic text-5xl font-serif leading-normal">{post.title}</h2>
                     <h3 className="mt-6 text-[#AF8260] italic text-2xl font-serif">{post.subtitle}</h3>
-                    <div className="mt-6 text-[#54473F] font-light text-left">
+                    <div className="mt-6 text-[#54473F] font-light text-left whitespace-pre-line">
                         <p>
                             {post.musing}
                         </p>
