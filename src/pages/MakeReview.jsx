@@ -76,13 +76,14 @@ const MakeReview = () => {
 
         try {
             if (slug) {
-                // ✅ Edit existing review
-                await axios.put(
+                const res = await axios.put(
                     `http://localhost:5001/api/reviews/${slug}`,
-                    { title, author, cover_url: coverUrl, review, rating:rating_value, spice_rating: spice_rating_value, tag_ids },
+                    { title, author, cover_url: coverUrl, review, rating: rating_value, spice_rating: spice_rating_value, tag_ids },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
-                navigate(`/book-review/${slug}`);
+                const newSlug = res.data.updated_review?.slug || slug;
+                navigate(`/book-review/${newSlug}`);
+                
             } else {
                 // Create new review
                 const res = await axios.post(

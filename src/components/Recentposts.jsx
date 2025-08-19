@@ -34,7 +34,7 @@ const RecentPosts = () => {
             to={`/book-review/${review.slug}`}
             >
               <img src={review.cover_url} alt="-" className="w-full h-full object-cover rounded"></img>
-              <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">{review.title} by {review.author}: Book Review</h3>
+              <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">{review.title} by {review.author}</h3>
             </Link>
         </div>
         ))}

@@ -63,7 +63,7 @@ const ReviewsPage = () => {
                             </div>
 
                         <h3 className="text-[#AF8260] italic text-2xl font-serif mt-4">
-                            {review.title} by {review.author}: Book Review
+                            {review.title} by {review.author}
                         </h3>
                         </Link>
                     </div>
