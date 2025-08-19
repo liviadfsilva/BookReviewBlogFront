@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const MakePost = () => {
     const navigate = useNavigate();
+    const { id } = useParams();
 
     const [title, setTitle] = useState("");
     const [subtitle, setSubtitle] = useState("");
@@ -11,34 +12,55 @@ const MakePost = () => {
     const [musing, setMusing] = useState("");
     const [error, setError] = useState("");
 
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        if (id) {
+            axios.get(`http://localhost:5001/api/blog-posts/${id}`, {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then(res => {
+                const data = res.data;
+                setTitle(data.title);
+                setSubtitle(data.subtitle);
+                setPostImg(data.post_img);
+                setMusing(data.musing);
+            })
+            .catch(err => {
+                console.error(err);
+                setError("Failed to fetch post data.");
+            });
+        }
+    }, [id, token]);
+
     const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    const token = localStorage.getItem("token");
-
     try {
-      const res = await axios.post(
-        "http://localhost:5001/api/blog-posts/",
-        {
-          title,
-          subtitle,
-          post_img: postImg,
-          musing,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+          let res;
+          if (id) {
+              // **CHANGED: PUT request for editing**
+              res = await axios.put(
+                  `http://localhost:5001/api/blog-posts/${id}`,
+                  { title, subtitle, post_img: postImg, musing },
+                  { headers: { Authorization: `Bearer ${token}` } }
+              );
+          } else {
+              // **UNCHANGED: POST request for new**
+              res = await axios.post(
+                  "http://localhost:5001/api/blog-posts/",
+                  { title, subtitle, post_img: postImg, musing },
+                  { headers: { Authorization: `Bearer ${token}` } }
+              );
+          }
 
-      const newPostId = res.data.new_blog_post.id;
-      navigate(`/blog/post/${newPostId}`);
-    } catch (err) {
-      console.error(err);
-      setError(err.response?.data?.error || "Failed to create post.");
-    }
+          const newPostId = res.data.new_blog_post?.id || id; // **ADDED: handle PUT response**
+          navigate(`/blog/post/${newPostId}`);
+      } catch (err) {
+          console.error(err);
+          setError(err.response?.data?.error || "Failed to save post.");
+      }
   };
 
     return (
@@ -56,7 +78,9 @@ const MakePost = () => {
             </svg>
             </h1>
 
-            <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">New Blog Post</h2>
+            <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">
+              {id ? "Edit Blog Post" : "New Blog Post"}
+            </h2>
 
             <div className="flex justify-center mt-12 mb-8">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-y-8">
