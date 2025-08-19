@@ -34,12 +34,6 @@ const Navbar = () => {
                                     5-Star Reviews
                                     </Link>
                                 </li>
-
-                                <li>
-                                    <Link to="/book-reviews/rating-system" className="block hover:text-[#AF8260] text-lg">
-                                    Rating System
-                                    </Link>
-                                </li>
                             </ul>
                         )}
                         </li>

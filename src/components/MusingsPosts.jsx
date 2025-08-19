@@ -23,7 +23,7 @@ const MusingsPosts = () => {
             >
               <img src={post.post_img} alt="-" className="w-full h-full object-cover rounded"></img>
 
-              <h1 className="text-[#AF8260] italic text-2xl font-serif mt-4">{post.title}</h1>
+              <h2 className="text-[#AF8260] italic text-2xl font-serif mt-4">{post.title}</h2>
               <p className="text-[#AF8260] mt-1">{post.subtitle}</p>
             </Link>
         </div>

@@ -14,7 +14,6 @@ import AdminHome from "./pages/AdminHome";
 import BlogPostPage from "./pages/BlogPostPage";
 import MakeReview from "./pages/MakeReview";
 import MakePost from "./pages/MakePost";
-import RatingSystem from "./pages/RatingSystem";
 import FiveStarReviews from "./pages/FiveStarReviews";
 import Categories from "./pages/Categories";
 import CategoryPage from "./pages/CategoryPage";
@@ -39,7 +38,6 @@ export default function App() {
             <Route path="/edit-review/:slug" element={<MakeReview />} />
             <Route path="/make-blog-post" element={<MakePost />} />
             <Route path="/edit-post/:slug" element={<MakePost />} /> 
-            <Route path="/book-reviews/rating-system" element={<RatingSystem />} />
             <Route path="/book-reviews/five-star-reviews" element={<FiveStarReviews />} />
             <Route path="/categories" element={<Categories />} />
             <Route path="/categories/:categoryName" element={<CategoryPage />} />
