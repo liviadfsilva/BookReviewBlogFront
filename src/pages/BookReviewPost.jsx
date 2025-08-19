@@ -5,21 +5,21 @@ const BookReviewPost = () => {
     const token = localStorage.getItem("token");
     const isLoggedIn = !!token;
 
-    const { id } = useParams();
+    const { slug } = useParams();
     const [review, setReview] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
 
     const handleEdit = () => {
-        navigate(`/edit-review/${review.id}`);
+        navigate(`/edit-review/${review.slug}`);
     };
 
     const handleDelete = async () => {
         const confirmed = window.confirm("Are you sure you want to delete this review?");
         if (!confirmed) return;
         try {
-            const response = await fetch(`http://localhost:5001/api/reviews/${review.id}`, {
+            const response = await fetch(`http://localhost:5001/api/reviews/${review.slug}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -43,7 +43,7 @@ const BookReviewPost = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5001/api/reviews/${id}`)
+        fetch(`http://localhost:5001/api/reviews/${slug}`)
         .then(res => {
             if (!res.ok) {
             throw new Error("Failed to fetch review.");
@@ -51,6 +51,11 @@ const BookReviewPost = () => {
             return res.json();
         })
         .then(data => {
+            if (data.tag_names) {
+            data.tag_names = data.tag_names.sort((a, b) => a.localeCompare(b));
+            
+            }
+
             setReview(data);
             setLoading(false);
         })
@@ -58,7 +63,7 @@ const BookReviewPost = () => {
             console.error(err);
             setLoading(false);
         });
-    }, [id]);
+    }, [slug]);
 
     if (loading) {
         return <p>Loading review...</p>;

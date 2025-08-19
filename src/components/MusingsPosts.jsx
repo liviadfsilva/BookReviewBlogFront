@@ -19,7 +19,7 @@ const MusingsPosts = () => {
         {posts.map((post) => (
           <div className="w-[350px] h-[350px]">
             <Link
-            to={`/blog/post/${post.id}`}
+            to={`/blog/post/${post.slug}`}
             >
               <img src={post.post_img} alt="-" className="w-full h-full object-cover rounded"></img>
 

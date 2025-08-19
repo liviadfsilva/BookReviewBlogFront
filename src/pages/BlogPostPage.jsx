@@ -5,14 +5,14 @@ const BlogPostPage = () => {
     const token = localStorage.getItem("token");
     const isLoggedIn = !!token;
 
-    const { id } = useParams();
+    const { slug } = useParams();
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
 
     const handleEdit = () => {
-        navigate(`/edit-post/${post.id}`);
+        navigate(`/edit-post/${post.slug}`);
     };
 
     const handleDelete = async () => {
@@ -20,7 +20,7 @@ const BlogPostPage = () => {
         if (!confirmed) return;
 
         try {
-            const response = await fetch(`http://localhost:5001/api/blog-posts/${post.id}`, {
+            const response = await fetch(`http://localhost:5001/api/blog-posts/${post.slug}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -44,7 +44,7 @@ const BlogPostPage = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5001/api/blog-posts/${id}`)
+        fetch(`http://localhost:5001/api/blog-posts/${slug}`)
         .then(res => {
             if (!res.ok) {
             throw new Error("Failed to fetch review.");
@@ -59,7 +59,7 @@ const BlogPostPage = () => {
             console.error(err);
             setLoading(false);
         });
-    }, [id]);
+    }, [slug]);
 
     if (loading) {
         return <p>Loading post...</p>;

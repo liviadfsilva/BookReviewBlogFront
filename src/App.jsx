@@ -30,15 +30,15 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/book-review/:id" element={<BookReviewPost />} />
+            <Route path="/book-review/:slug" element={<BookReviewPost />} />
             <Route path="/book-reviews/all-reviews" element={<ReviewsPage />} />
             <Route path="/blog/all-posts" element={<BlogPage />} />
             <Route path="/admin" element={<AdminHome />} />
-            <Route path="/blog/post/:id" element={<BlogPostPage />} />
+            <Route path="/blog/post/:slug" element={<BlogPostPage />} />
             <Route path="/make-book-review" element={<MakeReview />} />
-            <Route path="/edit-review/:id" element={<MakeReview />} />
+            <Route path="/edit-review/:slug" element={<MakeReview />} />
             <Route path="/make-blog-post" element={<MakePost />} />
-            <Route path="/edit-post/:id" element={<MakePost />} /> 
+            <Route path="/edit-post/:slug" element={<MakePost />} /> 
             <Route path="/book-reviews/rating-system" element={<RatingSystem />} />
             <Route path="/book-reviews/five-star-reviews" element={<FiveStarReviews />} />
             <Route path="/categories" element={<Categories />} />

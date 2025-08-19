@@ -17,7 +17,10 @@ const BlogPage = () => {
           }
           return res.json();
       })
-      .then(data => setPosts(data.reverse()))
+      .then(data => {
+          const sorted = data.sort((a, b) => b.id - a.id); // newest first
+          setPosts(sorted);
+      })
       .catch(err => console.error(err));
   }, []);
 
@@ -46,10 +49,10 @@ const BlogPage = () => {
 
       <div className="flex justify-center flex-wrap gap-x-24 gap-y-20 mt-8">
         {currentPosts.map((post) => (
-          <div key={post.id} className="w-[350px]">
+          <div key={post.slug} className="w-[350px]">
 
             <Link
-            to={`/blog/post/${post.id}`}
+            to={`/blog/post/${post.slug}`}
             >
 
               <div className="h-[350px] overflow-hidden rounded">

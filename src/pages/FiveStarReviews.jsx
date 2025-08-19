@@ -12,7 +12,8 @@ const FiveStarReviews = () => {
         axios
             .get("http://localhost:5001/api/reviews/five-star-reviews")
             .then(res => {
-                setReviews(res.data.reverse());
+                const sorted = res.data.sort((a, b) => b.id - a.id); // newest first
+                setReviews(sorted);
             })
             .catch(err => console.error(err));
     }, []);

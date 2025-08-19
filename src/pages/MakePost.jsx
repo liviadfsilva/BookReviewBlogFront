@@ -4,7 +4,7 @@ import axios from "axios";
 
 const MakePost = () => {
     const navigate = useNavigate();
-    const { id } = useParams();
+    const { slug } = useParams();
 
     const [title, setTitle] = useState("");
     const [subtitle, setSubtitle] = useState("");
@@ -15,8 +15,8 @@ const MakePost = () => {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        if (id) {
-            axios.get(`http://localhost:5001/api/blog-posts/${id}`, {
+        if (slug) {
+            axios.get(`http://localhost:5001/api/blog-posts/${slug}`, {
                 headers: { Authorization: `Bearer ${token}` }
             })
             .then(res => {
@@ -31,7 +31,7 @@ const MakePost = () => {
                 setError("Failed to fetch post data.");
             });
         }
-    }, [id, token]);
+    }, [slug, token]);
 
     const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,9 +39,9 @@ const MakePost = () => {
 
     try {
           let res;
-          if (id) {
+          if (slug) {
               res = await axios.put(
-                  `http://localhost:5001/api/blog-posts/${id}`,
+                  `http://localhost:5001/api/blog-posts/${slug}`,
                   { title, subtitle, post_img: postImg, musing },
                   { headers: { Authorization: `Bearer ${token}` } }
               );
@@ -53,8 +53,8 @@ const MakePost = () => {
               );
           }
 
-          const newPostId = res.data.new_blog_post?.id || id;
-          navigate(`/blog/post/${newPostId}`);
+          const newPostSlug = res.data.updated_post?.slug || slug;
+          navigate(`/blog/post/${newPostSlug}`);
       } catch (err) {
           console.error(err);
           setError(err.response?.data?.error || "Failed to save post.");
@@ -77,7 +77,7 @@ const MakePost = () => {
             </h1>
 
             <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">
-              {id ? "Edit Blog Post" : "New Blog Post"}
+              {slug ? "Edit Blog Post" : "New Blog Post"}
             </h2>
 
             <div className="flex justify-center mt-12 mb-8">

@@ -18,7 +18,10 @@ const ReviewsPage = () => {
             }
             return res.json();
         })
-        .then(data => setReviews(data.reverse()))
+        .then(data => {
+            const sorted = data.sort((a, b) => b.id - a.id);
+            setReviews(sorted);
+        })
         .catch(err => console.error(err));
     }, []);
 
@@ -48,9 +51,9 @@ const ReviewsPage = () => {
             
             <div className="flex justify-center flex-wrap gap-x-24 gap-y-16 my-8">
                 {currentReviews.map((review) => (
-                    <div key={review.id} className="w-[340px]">
+                    <div key={review.slug} className="w-[340px]">
                         <Link 
-                        to={`/book-review/${review.id}`}
+                        to={`/book-review/${review.slug}`}
                         >
                             <div className="aspect-[2/3] overflow-hidden rounded block">
                                 <img

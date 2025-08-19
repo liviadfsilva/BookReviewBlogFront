@@ -5,6 +5,7 @@ import axios from "axios";
 const MakeReview = () => {
     const navigate = useNavigate();
     const { id } = useParams();
+    const { slug } = useParams();
     const token = localStorage.getItem("token");
 
     const [title, setTitle] = useState("");
@@ -30,10 +31,10 @@ const MakeReview = () => {
     }, []);
 
     useEffect(() => {
-        if (!id) return;
+        if (!slug) return;
         const fetchReview = async () => {
             try {
-                const res = await axios.get(`http://localhost:5001/api/reviews/${id}`, {
+                const res = await axios.get(`http://localhost:5001/api/reviews/${slug}`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 const data = res.data;
@@ -42,7 +43,7 @@ const MakeReview = () => {
                 setCoverUrl(data.cover_url || "");
                 setReview(data.review || "");
                 setRating(data.rating || "");
-                setSpiceRating(data.spice_rating || "");
+                setSpiceRating(data.spice_rating != null ? String(data.spice_rating) : "");
                 setSelectedTags(data.tag_ids || []);
             } catch (err) {
                 console.error(err);
@@ -50,7 +51,7 @@ const MakeReview = () => {
             }
         };
         fetchReview();
-    }, [id, token]);
+    }, [slug, token]);
 
     const handleTagChange = (tagId) => {
         tagId = Number(tagId);
@@ -70,26 +71,27 @@ const MakeReview = () => {
         setError("");
 
         const tag_ids = selectedTags
-        const spice_rating_value = spiceRating.trim() === "" ? null : Number(spiceRating);
+        const spice_rating_value = String(spiceRating || "").trim() === "" ? null : Number(spiceRating);
+        const rating_value = String(rating || "").trim() === "" ? null : Number(rating);
 
         try {
-            if (id) {
+            if (slug) {
                 // ✅ Edit existing review
                 await axios.put(
-                    `http://localhost:5001/api/reviews/${id}`,
-                    { title, author, cover_url: coverUrl, review, rating, spice_rating: spice_rating_value, tag_ids },
+                    `http://localhost:5001/api/reviews/${slug}`,
+                    { title, author, cover_url: coverUrl, review, rating:rating_value, spice_rating: spice_rating_value, tag_ids },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
-                navigate(`/book-review/${id}`);
+                navigate(`/book-review/${slug}`);
             } else {
                 // Create new review
                 const res = await axios.post(
                     "http://localhost:5001/api/reviews/",
-                    { title, author, cover_url: coverUrl, review, rating, spice_rating: spice_rating_value, tag_ids },
+                    { title, author, cover_url: coverUrl, review, rating:rating_value, spice_rating: spice_rating_value, tag_ids },
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
-                const newReviewId = res.data.new_review.id;
-                navigate(`/book-review/${newReviewId}`);
+                const newReviewSlug = res.data.new_review.slug;
+                navigate(`/book-review/${newReviewSlug}`);
             }
         } catch (err) {
             console.error(err);
