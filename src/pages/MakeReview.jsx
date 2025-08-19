@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const MakeReview = () => {
     const navigate = useNavigate();
+    const { id } = useParams();
+    const token = localStorage.getItem("token");
 
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
@@ -27,6 +29,29 @@ const MakeReview = () => {
         fetchTags();
     }, []);
 
+    useEffect(() => {
+        if (!id) return;
+        const fetchReview = async () => {
+            try {
+                const res = await axios.get(`http://localhost:5001/api/reviews/${id}`, {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                const data = res.data;
+                setTitle(data.title || "");
+                setAuthor(data.author || "");
+                setCoverUrl(data.cover_url || "");
+                setReview(data.review || "");
+                setRating(data.rating || "");
+                setSpiceRating(data.spice_rating || "");
+                setSelectedTags(data.tag_ids || []);
+            } catch (err) {
+                console.error(err);
+                setError("Failed to load review data.");
+            }
+        };
+        fetchReview();
+    }, [id, token]);
+
     const handleTagChange = (tagId) => {
         tagId = Number(tagId);
         if (selectedTags.includes(tagId)) {
@@ -44,27 +69,31 @@ const MakeReview = () => {
         e.preventDefault();
         setError("");
 
-        const token = localStorage.getItem("token");
-        if (!token) {
-            setError("You must be logged in to post.");
-            return;
-        }
-
         const tag_ids = selectedTags
         const spice_rating_value = spiceRating.trim() === "" ? null : Number(spiceRating);
 
         try {
-            const res = await axios.post(
-                "http://localhost:5001/api/reviews/",
-                { title, author, cover_url: coverUrl, review, rating, spice_rating: spice_rating_value, tag_ids },
-                { headers: { Authorization: `Bearer ${token}` } }
-            );
-
-            const newReviewId = res.data.new_review.id;
-            navigate(`/book-review/${newReviewId}`);
+            if (id) {
+                // ✅ Edit existing review
+                await axios.put(
+                    `http://localhost:5001/api/reviews/${id}`,
+                    { title, author, cover_url: coverUrl, review, rating, spice_rating: spice_rating_value, tag_ids },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+                navigate(`/book-review/${id}`);
+            } else {
+                // Create new review
+                const res = await axios.post(
+                    "http://localhost:5001/api/reviews/",
+                    { title, author, cover_url: coverUrl, review, rating, spice_rating: spice_rating_value, tag_ids },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+                const newReviewId = res.data.new_review.id;
+                navigate(`/book-review/${newReviewId}`);
+            }
         } catch (err) {
             console.error(err);
-            setError(err.response?.data?.error || "Failed to create review.");
+            setError(err.response?.data?.error || "Failed to submit review.");
         }
     };
 
@@ -83,7 +112,9 @@ const MakeReview = () => {
             </svg>
             </h1>
 
-            <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">New Book Review</h2>
+            <h2 className="text-[#54473F] uppercase italic text-5xl text-center font-serif mt-10 mb-12">
+                {id ? "Edit Blog Post" : "New Blog Post"}
+            </h2>
 
             <div className="flex justify-center mt-12 mb-8">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-y-8">

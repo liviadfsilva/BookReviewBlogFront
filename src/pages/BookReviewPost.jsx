@@ -12,7 +12,7 @@ const BookReviewPost = () => {
     const navigate = useNavigate();
 
     const handleEdit = () => {
-        navigate(`/edit-post/${review.id}`);
+        navigate(`/edit-review/${review.id}`);
     };
 
     const handleDelete = async () => {
@@ -100,16 +100,16 @@ const BookReviewPost = () => {
                         <div className="mt-6 flex justify-center gap-16">
                             <button
                                 onClick={handleEdit}
-                                className="w-40 bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
+                                className="w-40 bg-[#e7cbb6] p-4 py-4 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
                             >
-                                Edit Post
+                                Edit Review
                             </button>
 
                             <button
                                 onClick={handleDelete}
-                                className="w-40 bg-[#e7cbb6] p-4 py-3 px-6 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
+                                className="w-40 bg-[#e7cbb6] p-4 py-4 rounded text-[#54473F] font-semibold uppercase hover:bg-[#d5b89c]"
                             >
-                                Delete Post
+                                Delete Review
                             </button>
                         </div>
                     )}

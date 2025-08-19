@@ -40,14 +40,12 @@ const MakePost = () => {
     try {
           let res;
           if (id) {
-              // **CHANGED: PUT request for editing**
               res = await axios.put(
                   `http://localhost:5001/api/blog-posts/${id}`,
                   { title, subtitle, post_img: postImg, musing },
                   { headers: { Authorization: `Bearer ${token}` } }
               );
           } else {
-              // **UNCHANGED: POST request for new**
               res = await axios.post(
                   "http://localhost:5001/api/blog-posts/",
                   { title, subtitle, post_img: postImg, musing },
@@ -55,7 +53,7 @@ const MakePost = () => {
               );
           }
 
-          const newPostId = res.data.new_blog_post?.id || id; // **ADDED: handle PUT response**
+          const newPostId = res.data.new_blog_post?.id || id;
           navigate(`/blog/post/${newPostId}`);
       } catch (err) {
           console.error(err);
